@@ -1,0 +1,127 @@
+﻿Rails Project Notes Template
+Github Link : https://github.com/Ejguzman3988/bankroll-manager
+Models & Attributes
+User
+	Game
+	PokerSite
+	Tournament
+	CashGame
+	first_name:string
+	user:belongs_to
+	name:string
+	name:string
+	name:string
+	last_name:string
+	poker_site:belongs_to
+	url:string
+	start_date:
+datetime
+	stake:string
+	username:string
+	game_type:belongs_to
+	
+
+	status:string
+	max_players:integer
+	Bankroll:decimal, precision: 8, scale: 2, default $0
+	name:string
+	
+
+	Buy-in:decimal, precision:8, scale:2
+	Buy_in:deimal, precision:8, scale:2
+	password_digest:string
+	
+
+	
+
+	Won:decimal, precision:8,scale:2
+	Won:decimal, precision:8,scale:2
+	Relationships
+(Right click table to add row or column)
+User
+	Game
+	PokerSite
+	Tournament
+	CashGame
+	User has many Games
+	Belongs to user
+	Has many Games
+	Has Many Games, as: :GameType
+	Has Many Games, as: :GameType
+	User has many PokerSites through Games
+	Belongs to PokerSite
+	Has many users through Games
+	Has many users through Games
+	Has many users through Games.
+	
+
+	Belongs to GameType, polymorphic: true
+	
+
+	
+
+	
+
+	
+
+Validations
+(Right click table to add row or column)
+
+
+User
+	Game
+	Poker site
+	Tournament
+	CashGame
+	username presence true, uniqueness true
+	Name presence true
+	Can’t register if tournament status is running
+	name presence true, uniqueness true, scope: PokerSite
+	Name presence true, uniqueness true, scope: PokerSite
+	First Name presence true
+	
+
+	Url presence true
+	start_time presence true
+	Stake presence true
+	Last Name presence true
+	
+
+	Name presence true
+	status presence true
+	max_players  presence true
+	has_secure_password
+	
+
+	
+
+	Buy_in presence true
+	Buy_in presence true
+	Scope Method
+
+Method Name
+	What method does
+	Tournament.running
+	Narrows down all tracked tournaments to the ones that have the status of running.
+	Tournament.registering
+	Narrows down to all registering tournament
+	Tournament.late_reg
+	Narrows down to all tournaments in late registration
+	Tournament.pokersite(site)
+	Shows all tournament for that pokersite
+	User.bankroll_T
+	Shows all tournaments available for your current bankroll
+	User.bankroll_C
+	Shows maximum stake for your current bankroll and cash games that don’t have the maximum players
+	Omniauth
+Facebook or Google or Github or Twitter or whatever you want to choose
+Routes (requires 2 nested routes, 1 new, and 1 index OR show )
+(Right click table to add row or column)
+
+
+Route
+	Action
+	/users/:user_id/tournaments/new
+	tournaments#new
+	/users/:user_id/tournaments
+	tournaments#index

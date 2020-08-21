@@ -1,0 +1,28 @@
+Models
+
+1. User (DEVISE)
+    [-] first_name:string
+    [-] last_name:string
+    [-] username:string
+    [-] bankroll:decimal
+    [-] password_digest:string
+2. Game
+    [-] user:belongs_to
+    [-] poker_site:belongs_to
+    [-] game_type:belongs_to
+    [-] name:string
+3. PokerSite
+    [-] name:string
+    [-] url:string
+4. Tournament
+    [-] name:string
+    [-] start_date:datetime
+    [-] status:string
+    [-] buy_in:decimal
+    [-] won:decimal
+5. CashGame
+    [-] name:string
+    [-] stake:string
+    [-] max_players:integer
+    [-] buy_in:decimal
+    [-] won:decimal
