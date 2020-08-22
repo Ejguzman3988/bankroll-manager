@@ -1,11 +1,8 @@
 Models
 
 1. User (DEVISE)
-    [-] first_name:string
-    [-] last_name:string
-    [-] username:string
-    [-] bankroll:decimal
-    [-] password_digest:string
+    [] UPDATE SIGN UP FORM
+    [] CREATE USER PROFILE VIEW
 2. Game
     [-] user:belongs_to
     [-] poker_site:belongs_to
@@ -26,3 +23,4 @@ Models
     [-] max_players:integer
     [-] buy_in:decimal
     [-] won:decimal
+
