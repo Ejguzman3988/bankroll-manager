@@ -1,0 +1,2 @@
+class PokerSitesController < ApplicationController
+end

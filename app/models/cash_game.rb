@@ -1,0 +1,2 @@
+class CashGame < ApplicationRecord
+end

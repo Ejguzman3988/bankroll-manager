@@ -1,0 +1,2 @@
+class PokerSite < ApplicationRecord
+end
