@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2020_08_22_052514) do
     t.string "stake"
     t.integer "max_players"
     t.decimal "buy_in", precision: 8, scale: 2
-    t.decimal "won", precision: 8, scale: 2
+    t.integer "poker_site_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -25,11 +25,13 @@ ActiveRecord::Schema.define(version: 2020_08_22_052514) do
   create_table "games", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "poker_site_id", null: false
-    t.integer "game_type_id", null: false
     t.string "name"
+    t.decimal "won", precision: 8, scale: 2
+    t.bigint "game_type_id"
+    t.string "game_type_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["game_type_id"], name: "index_games_on_game_type_id"
+    t.index ["game_type_type", "game_type_id"], name: "index_games_on_game_type_type_and_game_type_id"
     t.index ["poker_site_id"], name: "index_games_on_poker_site_id"
     t.index ["user_id"], name: "index_games_on_user_id"
   end
@@ -44,9 +46,11 @@ ActiveRecord::Schema.define(version: 2020_08_22_052514) do
   create_table "tournaments", force: :cascade do |t|
     t.string "name"
     t.datetime "start_date"
+    t.datetime "end_date"
+    t.integer "late_reg"
     t.string "status"
     t.decimal "buy_in", precision: 8, scale: 2
-    t.decimal "won", precision: 8, scale: 2
+    t.integer "poker_site_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -54,7 +58,7 @@ ActiveRecord::Schema.define(version: 2020_08_22_052514) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "username"
-    t.decimal "bankroll", precision: 8, scale: 2
+    t.decimal "bankroll", precision: 8, scale: 2, default: "0.0"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -70,7 +74,6 @@ ActiveRecord::Schema.define(version: 2020_08_22_052514) do
     t.index ["uid"], name: "index_users_on_uid"
   end
 
-  add_foreign_key "games", "game_types"
   add_foreign_key "games", "poker_sites"
   add_foreign_key "games", "users"
 end

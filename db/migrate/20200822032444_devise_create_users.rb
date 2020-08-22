@@ -3,9 +3,9 @@
 class DeviseCreateUsers < ActiveRecord::Migration[6.0]
   def change
     create_table :users do |t|
-      t.string :name 
-      t.string :username
-      t.decimal :bankroll, :precision => 8, :scale => 2
+      t.string :name # presence true 
+      t.string :username # presence true
+      t.decimal :bankroll, :precision => 8, :scale => 2, default: 0.00
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
