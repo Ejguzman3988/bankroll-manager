@@ -1,5 +1,5 @@
 class CashGame < ApplicationRecord
     has_many :games, as: :game_type
     has_many :users, through: :games
-    has_one :poker_site, through: :games
+    belongs_to :poker_site
 end

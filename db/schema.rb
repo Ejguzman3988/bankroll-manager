@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2020_08_22_052514) do
     t.integer "user_id", null: false
     t.integer "poker_site_id", null: false
     t.string "name"
-    t.decimal "won", precision: 8, scale: 2
+    t.decimal "won", precision: 8, scale: 2, default: "0.0"
     t.bigint "game_type_id"
     t.string "game_type_type"
     t.datetime "created_at", precision: 6, null: false
