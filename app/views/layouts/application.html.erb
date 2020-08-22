@@ -9,6 +9,18 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <!-- Navigation -->
+  <% if user_signed_in? %>
+    <%= link_to 'HOME', root_url %><br>                                 
+    <%= link_to 'PROFILE', root_url %><br>
+    <%= link_to 'LOG OUT', destroy_user_session_path, method: 'delete' %><br>
+  <% else %>
+    <%= link_to 'LOG IN', new_user_session_path %><br>
+    <%= link_to 'SIGN UP', new_user_registration_path %><br>
+  <% end %>
+  
+  <!-- END - Navigation --> 
+
   <body>
     <%= yield %>
   </body>
