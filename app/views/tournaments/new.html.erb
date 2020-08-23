@@ -1,0 +1,20 @@
+<%= form_for @tournament do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %> <br>
+    <%= f.label :poker_type %>
+    <%= f.text_field :poker_type %>
+    <%= f.label :start_date %>
+    <%= f.datetime_field :start_date %> <br>
+    <%= f.label :end_date %>
+    <%= f.datetime_field :end_date %> <br>
+    <%= f.label :late_reg %>
+    <%= f.text_field :late_reg %> <br>
+    <%= f.label :buy_in %>
+    <%= f.text_field :buy_in %> <br>
+    <%= f.label :status %>
+    <%= f.text_field :status %> <br>
+    <%= f.label :poker_site_id %>
+    <%= f.collection_select :poker_site_id, PokerSite.all, :id, :name, include_blank: true %> <br>
+
+    <%= f.submit %>
+<% end %>

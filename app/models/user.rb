@@ -2,8 +2,8 @@ class User < ApplicationRecord
   
   has_many :games
   has_many :poker_sites, through: :games
-  has_many :tournaments, through: :games
-  has_many :cash_games, through: :games
+  has_many :tournaments, through: :games, source: :game_type, source_type: "Tournament"
+  has_many :cash_games, through: :games, source: :game_type, source_type: "CashGame"
   
   
   # Include default devise modules. Others available are:

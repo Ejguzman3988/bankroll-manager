@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :cash_games
     resources :tournaments
   end
-
+  post '/users/:user_id/games/new', to: 'games#create'
   resources :tournaments
   resources :cash_games
 

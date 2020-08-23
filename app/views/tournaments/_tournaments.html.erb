@@ -13,9 +13,8 @@
       <th>Profit</th>
     <% end %>
   </tr>
-  <% @tournaments.each do |game| %>
+  <% @tournaments.each do |tourney| %>
   <tr style="text-align:center">
-    <% tourney = game.game_type %>
     <td>
         <%= tourney.start_date %>
     </td>
@@ -37,6 +36,7 @@
       <%= tourney.users.length %>
     </td>
     <% unless @user.nil? %>
+    <% game = Game.find_by(user_id: @user.id, game_type_type: "Tournament", game_type_id: tourney.id) %>
     <td>     
         <% income = game.won %>
         $<%= income %>

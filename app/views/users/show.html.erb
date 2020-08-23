@@ -1,6 +1,6 @@
 <h1><%= @user.name.capitalize %>'s Profile</h1>
 <% if @user == current_user  %>
-    <h1>BANKROLL: $<%= @user.bankroll%></h1><%= button_to 'update bankroll', update_bankroll_path, method: 'get' %>
+    <h1>BANKROLL: $<%= @user.bankroll%></h1>
 <% end %>
 
 <%#= link_to "Add to Bankroll"."#" %>

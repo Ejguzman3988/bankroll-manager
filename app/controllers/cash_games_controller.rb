@@ -4,9 +4,9 @@ class CashGamesController < ApplicationController
     def index
         if params[:user_id]
             @user = current_user
-            @cash_games = @user.games.select{|game| game.game_type_type == 'CashGame'}
+            @cash_games = @user.cash_games
         else
-            @cash_games = Game.all.select{|game| game.game_type_type == 'CashGame'}.uniq{|obj| obj.game_type_id}
+            @cash_games = CashGame.all
         end
         
     end

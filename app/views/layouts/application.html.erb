@@ -8,7 +8,18 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+  <!-- Flash -->
+  <% if flash[:alert] %>
+    <% flash[:alert].each do |alert| %>
+      <div>
+        <strong><%= alert %></strong>
+      </div>
+    <% end %>
+  <% end %>
+  
+  <!-- END Flash -->
+  
+  
   <!-- Navigation -->
   <% if user_signed_in? %>
     <%= link_to 'HOME', root_url %><br>                                 
@@ -17,7 +28,7 @@
     <%= link_to 'My Cash Games', user_cash_games_path(current_user) %> <br>
     <%= link_to 'All Tournaments', tournaments_path %> <br>
     <%= link_to 'All Cash Games', cash_games_path %> <br>
-    <%= link_to 'ADD GAME', new_games_path %> <br>
+    <%= link_to 'ADD GAME', new_user_game_path(current_user) %> <br>
     <%= link_to 'LOG OUT', destroy_user_session_path, method: 'delete' %><br>
   <% else %>
     <%= link_to 'LOG IN', new_user_session_path %><br>
