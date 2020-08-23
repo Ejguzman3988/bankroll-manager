@@ -1,5 +1,28 @@
 <h1><%= @user.email if @user %> Tournaments: </h1>
 
-<% @tournaments.each do |tourney| %>
+<h2 style="text-align:center">
+    Tournaments:
+</h2>
+<table style="width:100%">
+  <tr style="center">
+    <th>Tournament</th>
+    <th>Buy In</th>
+    <th>Players</th>
+  </tr>
+  <% @tournaments.each do |tourney| %>
+  <tr style="text-align:center">
+    <td>
+        <%= link_to tourney.name, tournament_path(tourney) %>
+    </td>
+    
+    <td>
+       <% cost = tourney.buy_in %>
+       $<%= cost %>
+    </td>
 
-<% end %>
+    <td>
+      <%= tourney.users.length %>
+    </td>
+  </tr>
+  <% end %>
+</table>
