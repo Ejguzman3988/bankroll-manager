@@ -1,6 +1,7 @@
-<h1>Welcome, <%= @user.name %></h1>
-
-<h1>BANKROLL: $<%= @user.bankroll %></h1>
+<h1><%= @user.name.capitalize %>'s Profile</h1>
+<% if @user == current_user  %>
+    <h1>BANKROLL: $<%= @user.bankroll%></h1>
+<% end %>
 
 <%#= link_to "Add to Bankroll"."#" %>
 <%#= link_to "Register for Tournament"."#" %>
@@ -10,97 +11,6 @@
 <!-- Create tabs to search days -->
 <h3>Today's Scedule: </h3>
 
-<h2 style="text-align:center">
-    Tournaments:
-</h2>
-<table style="width:100%">
-  <tr style="center">
-    <th>Time</th> 
-    <th>Tournament</th>
-    <th>Poker Site</th>
-    <th>buy_in</th>
-    <th>Income</th>
-    <th>Profit</th>
-  </tr>
-  <% @user.games.select{|game| game.game_type_type == 'Tournament'}.each do |game| %>
-  <tr style="text-align:center">
-    <% tourney = game.game_type %>
-    <td>
-        <%= tourney.start_date %>
-    </td>
-    
-    <td>
-        <%= tourney.name %>
-    </td>
-    
-    <td>
-        <%= tourney.poker_site.name%>
-    </td>
-    
-    <td>
-       <% cost = tourney.buy_in %>
-       $<%= cost %>
-    </td>
-    
-    <td>     
-        <% income = game.won %>
-        $<%= income %>
-    </td>
-    
-    <td>
-        <%= income - cost %>
-    </td>
-  </tr>
-  <% end %>
-</table>
+<%= render partial: 'tournaments/tournaments', locals: { tournaments: @tournaments} %>
 
-<h2 style="text-align:center">
-    Cash Games:
-</h2>
-<table style="width:100%">
-  <tr style="center">
-    <th>Table</th>
-    <th>Stake</th>
-    <th>Players</th>
-    <th>Poker Site</th>
-    <th>buy_in</th>
-    <th>Income</th>
-    <th>Profit</th>
-  </tr>
-
-  <% @user.games.select{|game| game.game_type_type == 'CashGame'}.each do |game| %>
-  <tr style="text-align:center">
-    <% cash = game.game_type %>
-
-    <td>
-        <%= cash.name %>
-    </td>
-    
-    <td>
-        <%= cash.stake %>
-    </td>
-
-    <td>
-        <%= cash.users.length %>/<%= cash.max_players %>
-    </td>
-    
-    <td>
-        <%= cash.poker_site.name%>
-    </td>
-    
-    <td>
-       <% cost = cash.buy_in %>
-       $<%= cost %>
-    </td>
-    
-    <td>     
-        <% income = game.won %>
-        $<%= income %>
-    </td>
-    
-    <td>
-        <%= income - cost %>
-    </td>
-  </tr>
-  <% end %>
-</table>
+<%= render partial: 'cash_games/cash_games', locals: {cash_games: @cash_games}  %>

@@ -1,13 +1,16 @@
 Rails.application.routes.draw do
-  resources :games
-  resources :cash_games
-  resources :tournaments
-  resources :poker_sites
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   
-  
+  resources :poker_sites
   root 'application#welcome'
-  resources :users, only: [:show]
+  resources :users, only: [:show] do
+    resources :games
+    resources :cash_games
+    resources :tournaments
+  end
+
+  resources :tournaments
+  resources :cash_games
 
 end

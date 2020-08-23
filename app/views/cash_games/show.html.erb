@@ -1,0 +1,34 @@
+<h1><%= @cash_game.name %></h1>
+
+<div>
+    <h4>Stake: <%= @cash_game.stake %></h4>
+</div>
+
+<div>
+    <h4>Players: <%= @cash_game.users.length %>/<%= @cash_game.max_players %></h4>
+    <ol>
+        <% @cash_game.users.each do |user| %>
+        <li>
+            <%= link_to user.name, user_path(user) %>
+        </li>
+        <% end %>
+    </ol>
+</div>
+
+<div>
+    <h4>Buy In: <%= @cash_game.buy_in %></h4>
+</div>
+
+<div>
+    <h4>Poker Site: <%= @cash_game.poker_site.name %></h4>
+</div>
+
+<p>Created At: <%= @cash_game.created_at %></p>
+
+<%# t.string "name"
+    t.string "stake"
+    t.integer "max_players"
+    t.decimal "buy_in", precision: 8, scale: 2
+    t.integer "poker_site_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false %>

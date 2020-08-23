@@ -1,0 +1,47 @@
+<h1><%= @tournament.name %></h1>
+
+<div>
+    <h4>Start Time</h4>
+    <%= @tournament.start_date %>
+</div>
+
+<div>
+    <h4>End Time</h4>
+    <%= @tournament.end_date %>
+</div>
+
+<div>
+    <h4>Late Reg</h4>
+    <%= @tournament.late_reg %>
+</div>
+
+<div>
+    <h4>Status</h4>
+    <%= @tournament.status %>
+</div>
+
+<div>
+    <h4>Buy In</h4>
+    <%= @tournament.buy_in %>
+</div>
+
+<div>
+    <h4>Poker Site</h4>
+    <%= @tournament.poker_site.name %>
+</div>
+
+<div>
+    <h4>Players: <%= @tournament.users.length %></h4>
+    <ol>
+    <% @tournament.users.each do |user| %>
+        <li>
+            <%= link_to user.name, user_path(user) %>
+        </li>
+    </ol>
+    <% end %>
+</div>
+
+<div>
+    <h4>Created At</h4>
+    <%= @tournament.created_at %>
+</div>

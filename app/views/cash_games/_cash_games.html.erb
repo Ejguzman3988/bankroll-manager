@@ -1,0 +1,50 @@
+<h2 style="text-align:center">
+    Cash Games:
+</h2>
+<table style="width:100%">
+  <tr style="center">
+    <th>Table</th>
+    <th>Stake</th>
+    <th>Players</th>
+    <th>Poker Site</th>
+    <th>buy_in</th>
+    <th>Income</th>
+    <th>Profit</th>
+  </tr>
+
+  <% cash_games.each do |game| %>
+  <tr style="text-align:center">
+    <% cash = game.game_type %>
+
+    <td>
+        <%= link_to cash.name, cash_game_path(cash) %>
+    </td>
+    
+    <td>
+        <%= cash.stake %>
+    </td>
+
+    <td>
+        <%= cash.users.length %>/<%= cash.max_players %>
+    </td>
+    
+    <td>
+        <%= cash.poker_site.name%>
+    </td>
+    
+    <td>
+       <% cost = cash.buy_in %>
+       $<%= cost %>
+    </td>
+    
+    <td>     
+        <% income = game.won %>
+        $<%= income %>
+    </td>
+    
+    <td>
+        <%= income - cost %>
+    </td>
+  </tr>
+  <% end %>
+</table>

@@ -1,0 +1,51 @@
+<h2 style="text-align:center">
+    Tournaments:
+</h2>
+<table style="width:100%">
+  <tr style="center">
+    <th>Time</th> 
+    <th>Tournament</th>
+    <th>Poker Site</th>
+    <th>Buy In</th>
+    <th>Players</th>
+    <% unless @user.nil? %>
+      <th>Income</th>
+      <th>Profit</th>
+    <% end %>
+  </tr>
+  <% @tournaments.each do |game| %>
+  <tr style="text-align:center">
+    <% tourney = game.game_type %>
+    <td>
+        <%= tourney.start_date %>
+    </td>
+    
+    <td>
+        <%= link_to tourney.name, tournament_path(tourney) %>
+    </td>
+    
+    <td>
+        <%= tourney.poker_site.name%>
+    </td>
+    
+    <td>
+       <% cost = tourney.buy_in %>
+       $<%= cost %>
+    </td>
+
+    <td>
+      <%= tourney.users.length %>
+    </td>
+    <% unless @user.nil? %>
+    <td>     
+        <% income = game.won %>
+        $<%= income %>
+    </td>
+    
+    <td>
+        <%= income - cost %>
+    </td>
+    <% end %>
+  </tr>
+  <% end %>
+</table>
