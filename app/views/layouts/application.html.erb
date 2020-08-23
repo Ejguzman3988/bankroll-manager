@@ -18,14 +18,20 @@
     <%= link_to "Log Out", destroy_user_session_path, method: "delete" %> <br>
     <%= link_to "All Tournaments", tournaments_path %> <br>
     <%= link_to "My Tournaments", user_tournaments_path(current_user) %> <br>
+    <%= link_to "ADD TOURNEY", new_user_tournament_path(current_user) %>
   <% end %>
   <!-- END NAVIGATION -->
 
   <!-- FLASH -->
   
+  <br>
   <% if flash[:alert] %>
-    <% flash[:alert].each do |message| %>
-      <%= message %>
+    <%= flash[:alert] %>
+  <% end %>
+
+  <% if flash[:notice] %>
+    <% flash[:notice].each do |message| %>
+      <%= message %> <br>
     <% end %>
   <% end %>
   

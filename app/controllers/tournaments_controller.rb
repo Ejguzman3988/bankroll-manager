@@ -26,7 +26,7 @@ class TournamentsController < ApplicationController
 
             redirect_to user_path(user) 
         else
-            flash[:alert] = @tournament.errors.full_messages
+            flash[:notice] = @tournament.errors.full_messages
         end
     end
 
