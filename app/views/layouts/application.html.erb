@@ -20,6 +20,16 @@
     <%= link_to "My Tournaments", user_tournaments_path(current_user) %> <br>
   <% end %>
   <!-- END NAVIGATION -->
+
+  <!-- FLASH -->
+  
+  <% if flash[:alert] %>
+    <% flash[:alert].each do |message| %>
+      <%= message %>
+    <% end %>
+  <% end %>
+  
+  <!-- END FLASH -->
   <body>
     <%= yield %>
   </body>

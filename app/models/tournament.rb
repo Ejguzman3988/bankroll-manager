@@ -1,4 +1,7 @@
 class Tournament < ApplicationRecord
     has_many :trackers
     has_many :users, through: :trackers
+
+    validates :name, presence: true, uniqueness: true
+    validates :buy_in, presence: true
 end
