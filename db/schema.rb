@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_23_215130) do
+ActiveRecord::Schema.define(version: 2020_08_23_220607) do
+
+  create_table "tournaments", force: :cascade do |t|
+    t.string "name"
+    t.decimal "buy_in"
+    t.decimal "winnings"
+    t.decimal "roi"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
