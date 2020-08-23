@@ -15,8 +15,6 @@ ActiveRecord::Schema.define(version: 2020_08_23_221417) do
   create_table "tournaments", force: :cascade do |t|
     t.string "name"
     t.decimal "buy_in"
-    t.decimal "winnings"
-    t.decimal "roi"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -24,6 +22,8 @@ ActiveRecord::Schema.define(version: 2020_08_23_221417) do
   create_table "trackers", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "tournament_id", null: false
+    t.decimal "winnings"
+    t.decimal "roi"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["tournament_id"], name: "index_trackers_on_tournament_id"

@@ -3,8 +3,6 @@ class CreateTournaments < ActiveRecord::Migration[6.0]
     create_table :tournaments do |t|
       t.string :name
       t.decimal :buy_in
-      t.decimal :winnings
-      t.decimal :roi
 
       t.timestamps
     end

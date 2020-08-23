@@ -3,7 +3,8 @@ class CreateTrackers < ActiveRecord::Migration[6.0]
     create_table :trackers do |t|
       t.belongs_to :user, null: false, foreign_key: true
       t.belongs_to :tournament, null: false, foreign_key: true
-
+      t.decimal :winnings
+      t.decimal :roi
       t.timestamps
     end
   end
