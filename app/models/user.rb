@@ -17,4 +17,11 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0,20]
     end      
   end
+
+  def update_bankroll(game)
+    cost = game.game_type.buy_in
+    income = game.won
+    profit = income - cost
+    self.bankroll += profit
+  end
 end

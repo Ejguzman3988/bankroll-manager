@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   
   resources :poker_sites
   root 'application#welcome'
-  resources :users, only: [:show] do
+  resources :users do
     resources :games
     resources :cash_games
     resources :tournaments

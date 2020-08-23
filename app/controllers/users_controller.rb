@@ -6,4 +6,5 @@ class UsersController < ApplicationController
         @tournaments = @user.games.select{|game| game.game_type_type == 'Tournament'}
         @cash_games = @user.games.select{|game| game.game_type_type == 'CashGame'}
     end
+
 end

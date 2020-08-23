@@ -11,89 +11,25 @@
     This app was developed using the rails framework. If you would like to learn more about rails, please visit <%=  link_to 'ruby on rails website', 'https://rubyonrails.org/'%>.
 
     </p>
-</div>
 
-<h4>USERS:</h4>
-<ol>
-<% User.all.each do |user| %>
-    <li>
-        <br>
-        <ul>
-        <% user.attributes.each do |key, value| %>
-            <li>
-                <%= key %>: <%= value %>
-            </li>
-        <% end %>
-        </ul>
-    </li>
-<% end %>
-</ol>
+    <ol>
+        <li>
+            Keep poker bankroll separated from everyday cash
+        </li>
 
-<br>
+        <li>
+            Do not withdraw money from your bankroll
+        </li>
 
-<h4>Tournaments:</h4>
-<ol>
-<% Tournament.all.each do |tournament| %>
-    <li>
-        <br>
-        <ul>
-        <% tournament.attributes.each do |key, value| %>
-            <li>
-                <%= key %>: <%= value %>
-            </li>
-        <% end %>
-        </ul>
-    </li>
-<% end %>
-</ol>
-<br>
+        <li>
+            Be Willing To Take Aggressive Shots When Needed
+        </li>
 
-<h4>CashGames:</h4>
-<ol>
-<% CashGame.all.each do |cash| %>
-    <li>
-        <br>
-        <ul>
-        <% cash.attributes.each do |key, value| %>
-            <li>
-                <%= key %>: <%= value %>
-            </li>
-        <% end %>
-        </ul>
-    </li>
-<% end %>
-</ol>
-<br>
+        <li>
+            Don't Be Afraid To Drop Down In Stakes To Regain Your Confidence
+        </li>
 
-<h4>Game:</h4>
-<ol>
-<% Game.all.each do |game| %>
-    <li>
-        <br>
-        <ul>
-        <% game.attributes.each do |key, value| %>
-            <li>
-                <%= key %>: <%= value %>
-            </li>
-        <% end %>
-        </ul>
-    </li>
-<% end %>
-</ol>
-<br>
-
-<h4>Poker Sites:</h4>
-<ol>
-<% PokerSite.all.each do |site| %>
-    <li>
-        <br>
-        <ul>
-        <% site.attributes.each do |key, value| %>
-            <li>
-                <%= key %>: <%= value %>
-            </li>
-        <% end %>
-        </ul>
-    </li>
-<% end %>
-</ol>
+        <li>
+            Save Money On Non-Poker Expenses When Playing
+        </li>
+    </ol>

@@ -17,6 +17,7 @@
     <%= link_to 'My Cash Games', user_cash_games_path(current_user) %> <br>
     <%= link_to 'All Tournaments', tournaments_path %> <br>
     <%= link_to 'All Cash Games', cash_games_path %> <br>
+    <%= link_to 'ADD GAME', new_games_path %> <br>
     <%= link_to 'LOG OUT', destroy_user_session_path, method: 'delete' %><br>
   <% else %>
     <%= link_to 'LOG IN', new_user_session_path %><br>
