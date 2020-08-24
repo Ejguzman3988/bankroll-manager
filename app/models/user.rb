@@ -17,6 +17,11 @@ class User < ApplicationRecord
     end 
   end
 
+  def update_bankroll(tourney)
+    self.bankroll -= tourney.buy_in
+    self.save
+  end
+
   def bankroll_buy_in
     self.bankroll/100
   end

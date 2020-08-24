@@ -2,6 +2,6 @@
 <% if @user == current_user %>
     <h1>BANKROLL: $<%= @user.bankroll %></h1>
     <h3>Suggested Buy In: $<%= @user.bankroll_buy_in %></h3>
-    <%= link_to "Deposit", edit_user_path(current_user) %>
+    <%= link_to "Adjust Bankroll Total", edit_user_path(current_user) %>
 <% end %>
 <%= render partial: 'tournaments/tournaments', locals: {tournaments: @user.tournaments} %>

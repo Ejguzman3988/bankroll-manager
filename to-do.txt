@@ -1,0 +1,8 @@
+1. Create Tournament show page
+    1a. Make it show the players in the tournament
+    1b. ROI
+    1c. Make it so that user can add how much they won on the tournament table.
+2. Make sure User can be registered with a name.
+3. Use materialized to start creating totals column. 
+4. Make sure to implement more of the bankroll management ideas
+5. Search functions (using scope methods)

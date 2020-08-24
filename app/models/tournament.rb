@@ -4,4 +4,7 @@ class Tournament < ApplicationRecord
 
     validates :name, presence: true, uniqueness: true
     validates :buy_in, presence: true
+
+    scope :user_tourneys, ->(num) { joins(:trackers).where(trackers: {user_id: num}).uniq}
+
 end

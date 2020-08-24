@@ -5,7 +5,7 @@ class TournamentsController < ApplicationController
         @user = User.find_by(id: params[:user_id])
         
         if @user
-            @tournaments = @user.tournaments
+            @tournaments = Tournament.user_tourneys(@user.id)
         else
             @tournaments = Tournament.all
         end
@@ -16,7 +16,13 @@ class TournamentsController < ApplicationController
     end
 
     def create
-        @tournament = Tournament.new(tournament_params)
+        
+        @tournament = Tournament.find_by(tournament_params)
+        
+        if @tournament.nil?
+            @tournament = Tournament.new(tournament_params) 
+        end
+
         if @tournament.save
             user = current_user
 
@@ -26,7 +32,12 @@ class TournamentsController < ApplicationController
             redirect_to user_path(user) 
         else
             flash[:notice] = @tournament.errors.full_messages
+            render :new
         end
+    end
+
+    def show
+        @tournament = Tournament.find(params[:id])
     end
 
     private

@@ -1,0 +1,24 @@
+<h1>Tourney: <%= @tournament.name %></h1>
+
+<% if @tournament.buy_in > current_user.bankroll_buy_in %>
+    <div>
+        <p> This Tournament isn't within your bankroll </p>
+    </div>
+<% else %>
+    <div>
+        <p> This tournament is within your bankroll. </p>
+    </div>
+<% end %>
+
+<h3>Buy In:</h3><%= @tournament.buy_in %>
+
+<h3>Players: </h3>
+<% @tournament.users.each do |user| %>
+<ol>
+    <li>
+        <%= link_to user.name, user_path(user) %>
+        <br>
+    </li>
+</ol>    
+
+<% end %>

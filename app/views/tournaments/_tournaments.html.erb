@@ -6,6 +6,7 @@
     <th>Tournament</th>
     <th>Buy In</th>
     <th>Players</th>
+    <th>Total Won:</th>
   </tr>
   <% tournaments.each do |tourney| %>
   <tr style="text-align:center">
@@ -20,6 +21,10 @@
 
     <td>
       <%= tourney.users.length %>
+    </td>
+
+    <td>
+      <%= Tracker.won_total(current_user, tourney) %>
     </td>
   </tr>
   <% end %>
