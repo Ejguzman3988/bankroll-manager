@@ -13,10 +13,13 @@
 <h3>Buy In:</h3><%= @tournament.buy_in %>
 
 <h3>Players: </h3>
-<% @tournament.users.each do |user| %>
+<% @tournament.users.uniq.each do |user| %>
 <ol>
     <li>
-        <%= link_to user.name, user_path(user) %>
+        <% number_attempts = Tracker.tourney_user_length(@tournament, user) %>
+        <%= link_to user.name, user_path(user) %> <% if number_attempts > 1 %>
+            (<%= number_attempts %>) 
+        <% end %>
         <br>
     </li>
 </ol>    

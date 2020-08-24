@@ -6,7 +6,10 @@
     <th>Tournament</th>
     <th>Buy In</th>
     <th>Players</th>
-    <th>Total Won:</th>
+    <% if @user %>
+      <th>Total Won</th>
+      <th>Profit</th>
+    <% end %>
   </tr>
   <% tournaments.each do |tourney| %>
   <tr style="text-align:center">
@@ -22,10 +25,16 @@
     <td>
       <%= tourney.users.length %>
     </td>
+    <% if @user %>
+      <td>
+        $<%= Tracker.won_total(@user, tourney) %>
+      </td>
 
-    <td>
-      <%= Tracker.won_total(current_user, tourney) %>
-    </td>
+      <td>
+        <% number_attempts = Tracker.tourney_user_length(tourney, @user) %>
+        <%= Tracker.won_total(@user, tourney) - (tourney.buy_in * number_attempts) %>
+      </td>
+    <% end %>
   </tr>
   <% end %>
 </table>
