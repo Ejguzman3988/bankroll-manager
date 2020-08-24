@@ -6,7 +6,7 @@
     <th>Tournament</th>
     <th>Buy In</th>
     <th>Players</th>
-    <% if @user %>
+    <% if @user == current_user %>
       <th>Total Won</th>
       <th>Profit</th>
     <% end %>
@@ -25,9 +25,10 @@
     <td>
       <%= tourney.users.length %>
     </td>
-    <% if @user %>
+    <% if @user == current_user %>
+      <%= form_tag user_update_won_path(current_user) %>
       <td>
-        $<%= Tracker.won_total(@user, tourney) %>
+        $<%= text_field_tag( "tournament[winnings][#{tourney.id}]", Tracker.won_total(current_user, tourney)) %> <%= link_to 'X', "/users/#{@user.id}/tournaments/#{tourney.id}", method: "delete" %>
       </td>
 
       <td>
@@ -37,4 +38,7 @@
     <% end %>
   </tr>
   <% end %>
+<div style = 'text-align:center'>
+  <%= button_to 'Save', action: 'update' if @user == current_user %>
+</div>
 </table>

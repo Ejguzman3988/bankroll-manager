@@ -19,7 +19,10 @@ class UsersController < ApplicationController
 
   private
     def set_user
-      @user = User.find(params[:id])
+      @user = User.find_by(id: params[:id])
+      if @user.nil?
+        redirect_to new_user_session_path
+      end
     end
 
     def user_params

@@ -4,4 +4,4 @@
     <h3>Suggested Buy In: $<%= @user.bankroll_buy_in %></h3>
     <%= link_to "Adjust Bankroll Total", edit_user_path(current_user) %>
 <% end %>
-<%= render partial: 'tournaments/tournaments', locals: {tournaments: @user.tournaments} %>
+<%= render partial: 'tournaments/tournaments', locals: {tournaments: Tournament.user_tourneys(@user.id)} %>

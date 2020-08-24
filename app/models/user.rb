@@ -17,8 +17,12 @@ class User < ApplicationRecord
     end 
   end
 
-  def update_bankroll(tourney)
+  def update_bankroll(tourney, won = BigDecimal(0))
+    tracker = Tracker.where(user_id: self.id, tournament_id: tourney.id).last
+    tracker.winnings = won
+    tracker.save
     self.bankroll -= tourney.buy_in
+    self.bankroll += tracker.winnings
     self.save
   end
 

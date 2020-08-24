@@ -3,5 +3,6 @@
     <%= f.text_field :name %> <br>
     <%= f.label :buy_in, 'Buy In: ' %>
     <%= f.text_field :buy_in %> <br>
+    Won: <%= text_field_tag 'tracker[won]', BigDecimal(0) %>
     <%= f.submit %>
 <% end %>

@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :tournaments
+    post '/users/:user_id/tournaments', to: 'tournaments#update', as: "update_won"
+    delete 'tournaments/:id', to: 'tournaments#destroy', as: "remove_tourney" 
   end
   post '/users/:user_id/tournaments/new', to: 'tournaments#create'
 
