@@ -14,7 +14,7 @@
     <%= link_to "Sign In", new_user_session_path %>
     <%= link_to "Register", new_user_registration_path  %>
   <% else %>
-    <%= link_to "Home" %>
+    <%= link_to "Home", user_path(current_user) %>
     <%= link_to "Log Out", destroy_user_session_path, method: "delete" %> <br>
     <%= link_to "All Tournaments", tournaments_path %> <br>
     <%= link_to "My Tournaments", user_tournaments_path(current_user) %> <br>
@@ -29,10 +29,12 @@
     <%= flash[:alert] %>
   <% end %>
 
-  <% if flash[:notice] %>
+  <% unless flash[:notice].to_s %>
     <% flash[:notice].each do |message| %>
       <%= message %> <br>
-    <% end %>
+    <% end%>
+  <% else %>
+    <%= flash[:notice] %>
   <% end %>
   
   <!-- END FLASH -->

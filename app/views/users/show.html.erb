@@ -1,5 +1,7 @@
-<h1><%= @user.email %> Profile</h1>
+<h1><%= @user.name %> Profile</h1>
 <% if @user == current_user %>
-    <h1>BANKROLL: $</h1>
+    <h1>BANKROLL: $<%= @user.bankroll %></h1>
+    <h3>Suggested Buy In: $<%= @user.bankroll_buy_in %></h3>
+    <%= link_to "Deposit", edit_user_path(current_user) %>
 <% end %>
 <%= render partial: 'tournaments/tournaments', locals: {tournaments: @user.tournaments} %>

@@ -11,5 +11,5 @@ Rails.application.routes.draw do
     resources :tournaments
   end
   post '/users/:user_id/tournaments/new', to: 'tournaments#create'
-  
+
 end

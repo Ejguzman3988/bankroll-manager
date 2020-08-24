@@ -21,8 +21,7 @@ class TournamentsController < ApplicationController
             user = current_user
 
             user.tournaments << @tournament
-            #user.update_bankroll(@tournament)
-            user.save
+            user.update_bankroll(@tournament)
 
             redirect_to user_path(user) 
         else
