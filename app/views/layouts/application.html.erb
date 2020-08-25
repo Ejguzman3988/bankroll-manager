@@ -9,17 +9,47 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <!-- NAVIGATION -->
-  <% unless user_signed_in? %> 
-    <%= link_to "Home", root_path %> 
-    <%= link_to "Sign In", new_user_session_path %>
-    <%= link_to "Register", new_user_registration_path  %>
-  <% else %>
-    <%= link_to "Home", user_path(current_user) %>
-    <%= link_to "Log Out", destroy_user_session_path, method: "delete" %> <br>
-    <%= link_to "All Tournaments", tournaments_path %> <br>
-    <%= link_to "My Tournaments", user_tournaments_path(current_user) %> <br>
-    <%= link_to "ADD TOURNEY", new_user_tournament_path(current_user) %>
-  <% end %>
+  <nav class="blue-grey darken-3">
+    <div class="container">
+      <% unless user_signed_in? %> 
+        <ul>
+          <li>
+            <%= link_to "Home", root_path %> 
+          </li>
+          
+          <li>
+            <%= link_to "Sign In", new_user_session_path %>
+          </li>
+          
+          <li>
+            <%= link_to "Register", new_user_registration_path  %>
+          </li>
+        </ul>
+      <% else %>
+      <ul>
+        <li>
+          <%= link_to "Home", user_path(current_user) %>
+        </li> 
+        
+        <li>
+          <%= link_to "All Tournaments", tournaments_path %> <br>
+        </li>
+        
+        <li>
+          <%= link_to "My Tournaments", user_tournaments_path(current_user) %> <br>
+        </li>
+        
+        <li>
+          <%= link_to "ADD TOURNEY", new_user_tournament_path(current_user) %>
+        </li>
+       
+        <li class='right'>
+          <%= button_to "Log Out", destroy_user_session_path, method: 'delete', class: 'blue-grey darken-3 white-text' %> <br>
+        </li>
+      </ul>
+      <% end %>
+    </div>
+  </nav>
   <!-- END NAVIGATION -->
 
   <!-- FLASH -->
@@ -38,7 +68,34 @@
   <% end %>
   
   <!-- END FLASH -->
-  <body>
-    <%= yield %>
+    <div class='container'>
+      <body class='grey lighten-2'>
+        <div class='contrainer white lighten-4 z-depth-3' style='margin-top: 25px; margin-bottom: 25px; padding: 25px'>
+          <%= yield %>
+        </div>
+    </div>
+  <!-- Footer -->
+    <footer class="page-footer blue-grey darken-3" >
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text">Bankroll Manager</h5>
+            <p class="grey-text text-lighten-4">Website made by Eriberto Guzman.</p>
+          </div>
+          <div class=" right">
+            <h5 class="white-text">Links</h5>
+            <ul>
+              <li><a class="grey-text text-lighten-3" href="https://github.com/Ejguzman3988">Github</a></li>
+              <li><a class="grey-text text-lighten-3" href="https://www.linkedin.com/in/eriberto-guzman-1505361a1/">LinkedIn</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+        © 2020 Copyright Text
+      </div>
+    </footer>    
+    <!-- End Footer -->
   </body>
 </html>

@@ -43,7 +43,7 @@
     <% end %>
   </tr>
   <% end %>
-<div style = 'text-align:center'>
-  <%= button_to 'Save', action: 'update' if @user == current_user %>
+<div class='center'>
+  <%= button_to('Save', action: 'update') if @user == current_user && tournaments %>
 </div>
 </table>

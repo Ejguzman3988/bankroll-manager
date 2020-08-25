@@ -25,7 +25,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise'
 gem 'omniauth-github', github: 'omniauth/omniauth-github'
 gem 'dotenv-rails', group: [:development, :test]
-
+gem 'materialize-sass', '~> 1.0.0'
 gem 'pry'
 
 # Use Active Storage variant

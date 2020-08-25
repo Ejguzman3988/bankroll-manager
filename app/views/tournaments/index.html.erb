@@ -1,3 +1,4 @@
-<h1><%= @user.name if @user %> Tournaments: </h1>
-
+<% if @user %>
+    <h1 class='center'><%= @user.name.capitalize%> 's  </h1>
+<% end %>
 <%= render partial: 'tournaments', locals: {tournaments: @tournaments} %>

@@ -1,7 +1,9 @@
-<h1><%= @user.name %> Profile</h1>
+<h1 class="center"><%= @user.name.capitalize %>'s Profile</h1>
 <% if @user == current_user %>
-    <h1>BANKROLL: $<%= @user.bankroll %></h1>
-    <h3>Suggested Buy In: $<%= @user.bankroll_buy_in %></h3>
-    <%= link_to "Adjust Bankroll Total", edit_user_path(current_user) %>
+    <h3 class="center">BANKROLL: $<%= @user.bankroll %></h3>
+    <h3 class='center' >Suggested Buy In: $<%= @user.bankroll_buy_in %></h3>
+    <div class='center'>
+        <%= link_to "Adjust Bankroll Total", edit_user_path(current_user), class: "blue-grey darken-2 waves-effect waves-light btn" %>
+    </div>
 <% end %>
 <%= render partial: 'tournaments/tournaments', locals: {tournaments: Tournament.user_tourneys(@user.id)} %>
