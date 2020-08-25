@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
   
+  def index
+    redirect_to new_user_session_path
+  end
+  
   def show
   end
 
@@ -26,6 +30,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:name, :bankroll)
+      params.require(:user).permit(:name, :bankroll, :email, :password, :password_confirmation)
     end
 end

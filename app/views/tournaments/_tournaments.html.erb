@@ -9,6 +9,7 @@
     <% if @user == current_user %>
       <th>Total Won</th>
       <th>Profit</th>
+      <th>ROI</th>
     <% end %>
   </tr>
   <% tournaments.each do |tourney| %>
@@ -34,6 +35,10 @@
       <td>
         <% number_attempts = Tracker.tourney_user_length(tourney, @user) %>
         <%= Tracker.won_total(@user, tourney) - (tourney.buy_in * number_attempts) %>
+      </td>
+
+      <td>
+        <%= Tracker.roi_total(@user, tourney) %>
       </td>
     <% end %>
   </tr>

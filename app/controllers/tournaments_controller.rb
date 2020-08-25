@@ -31,6 +31,7 @@ class TournamentsController < ApplicationController
             redirect_to user_path(user) 
         else
             flash[:notice] = @tournament.errors.full_messages
+            @tournament = Tournament.find_by(name: tournament_params[:name])
             render :new
         end
     end
@@ -44,6 +45,7 @@ class TournamentsController < ApplicationController
         user = current_user
         tournament_params[:winnings].each do |key, value|
             tourney = Tournament.find(key)
+            Tracker.tourney_user(tourney, user).each{|t| t.winnings = BigDecimal(0); t.save}
             last_tracker = Tracker.tourney_user(tourney, user).last
             last_tracker.winnings = value
             user.update_bankroll(tourney, value)
