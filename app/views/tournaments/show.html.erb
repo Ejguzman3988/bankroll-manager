@@ -12,6 +12,9 @@
 
 <h3>Buy In:</h3><%= @tournament.buy_in %>
 
+<% if current_user.tournaments.include?(@tournament) %>
+    <%= button_to "Delete Tracker", user_remove_tourney_path(current_user), method: 'delete' %>
+<% end %>
 <h3>Players: </h3>
 <% @tournament.users.uniq.each do |user| %>
 <ol>
