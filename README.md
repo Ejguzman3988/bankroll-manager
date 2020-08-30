@@ -35,9 +35,7 @@ After starting your server use the homepage at [localhost:300](http://localhost:
 
 Sample video below: 
 
-<figure class="video_container">
-  <iframe src="https://www.youtube.com/embed/wiOjbbg0eAE" frameborder="0" allowfullscreen="true"> </iframe>
-</figure>
+[YouTube Demo](https://www.youtube.com/embed/wiOjbbg0eAE)
 
 ## Contributing
 
