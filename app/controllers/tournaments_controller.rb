@@ -1,5 +1,6 @@
 class TournamentsController < ApplicationController
     before_action :authenticate_user!
+    skip_before_action :verify_authenticity_token, only: [:destroy]
     
     def index
         @user = User.find_by(id: params[:user_id])
@@ -55,6 +56,7 @@ class TournamentsController < ApplicationController
     end
 
     def destroy
+        binding.pry
         user = User.find(params[:user_id])
         tourney = Tournament.find(params[:id])
         if user == current_user

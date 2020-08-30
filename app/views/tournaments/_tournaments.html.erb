@@ -1,8 +1,8 @@
 <h2 style="text-align:center">
     Tournaments:
 </h2>
-<table style="width:100%">
-  <tr style="center">
+<table class='striped'>
+  <tr>
     <th>Tournament</th>
     <th>Buy In</th>
     <th>Players</th>
@@ -13,7 +13,7 @@
     <% end %>
   </tr>
   <% tournaments.each do |tourney| %>
-  <tr style="text-align:center">
+  <tr >
     <td>
         <%= link_to tourney.name, tournament_path(tourney) %>
     </td>
@@ -29,7 +29,9 @@
     <% if @user == current_user %>
       <%= form_tag user_update_won_path(current_user) %>
       <td>
-        $<%= text_field_tag( "tournament[winnings][#{tourney.id}]", Tracker.won_total(current_user, tourney)) %> <%= link_to 'X', "/users/#{@user.id}/tournaments/#{tourney.id}", method: "delete" %>
+        <div class='input-field inline'>
+          <%= text_field_tag( "tournament[winnings][#{tourney.id}]", Tracker.won_total(current_user, tourney)) %>
+        </div>
       </td>
 
       <td>
