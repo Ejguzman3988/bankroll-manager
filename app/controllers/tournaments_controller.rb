@@ -56,7 +56,6 @@ class TournamentsController < ApplicationController
     end
 
     def destroy
-        binding.pry
         user = User.find(params[:user_id])
         tourney = Tournament.find(params[:id])
         if user == current_user

@@ -35,7 +35,11 @@ After starting your server use the homepage at [localhost:300](http://localhost:
 
 Sample video below: 
 
-TODO: POST SAMPLE VIDEO
+<!-- blank line -->
+<figure class="video_container">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/wiOjbbg0eAE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</figure>
+<!-- blank line -->
 
 
 ## Contributing
